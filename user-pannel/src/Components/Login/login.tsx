@@ -1,19 +1,34 @@
 import React, { useState } from "react";
 
 export const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleClickLoginButton = () => {
-    console.log("login");
+  type AuthUser = {
+    userName?: String;
+    password?: Number;
   };
 
+  const access: AuthUser = { userName: "admin", password: 1234 };
+
+  const [userValue, setUserValue] = useState<AuthUser | null>(null);
+
   const handleBlurUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserName(event.target.value);
+    if (event.target.value)
+      setUserValue({ ...userValue, userName: event.target.value });
   };
 
   const handleBlurPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
+    if (event)
+      setUserValue({ ...userValue, password: Number(event.target.value) });
+  };
+
+  const handleClickLoginButton = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    if (
+      userValue?.userName === access.userName &&
+      userValue?.password === access.password
+    ) {
+      // navigate or dispatch for set mode
+    }
   };
 
   return (
