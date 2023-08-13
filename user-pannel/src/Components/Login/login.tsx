@@ -1,13 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import data from '../../dataBase.json';
 
 export const Login = () => {
   type AuthUser = {
     userName?: String;
     password?: Number;
   };
-  const preDefinedAccess: AuthUser = { userName: "admin", password: 1234 };
+  const preDefinedAccess: AuthUser = {
+    userName: data.account.userName,
+    password: data.account.password,
+  };
   const inputPasswordReference = useRef<HTMLInputElement>(null!);
   const [userValue, setUserValue] = useState<AuthUser | null>(null);
+  const navigate = useNavigate();
 
   const handleBlurUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value)
@@ -22,19 +28,19 @@ export const Login = () => {
       });
   };
 
-  const handleClickLoginButton = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleClickLoginButton = () => {
     if (
       userValue?.userName === preDefinedAccess.userName &&
       userValue?.password === preDefinedAccess.password
     ) {
-      // navigate url or dispatch for set mode
+      navigate('/Profile');
+    } else {
+      console.log('Toast');
     }
   };
 
   const handleKeyUpUserName = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key === "Enter" || event.key === "Tab") {
+    if (event.key === 'Enter' || event.key === 'Tab') {
       inputPasswordReference.current.focus();
     }
   };
