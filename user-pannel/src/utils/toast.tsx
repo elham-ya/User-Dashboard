@@ -1,6 +1,10 @@
-import React from 'react';
+enum ToastType {
+  warning = "warning",
+  danger = "danger",
+  success = "success",
+}
 type ToastProps = {
-  type: string;
+  type: ToastType;
   message: string;
   onClose: () => void;
 };
@@ -8,7 +12,7 @@ type ToastProps = {
 function Toast(props: ToastProps) {
   const render = () => {
     switch (props.type) {
-      case 'danger':
+      case "danger":
         return (
           <div
             id="toast-danger"
@@ -54,7 +58,7 @@ function Toast(props: ToastProps) {
             </button>
           </div>
         );
-      case 'success':
+      case "success":
         return (
           <div
             id="toast-success"
@@ -100,7 +104,7 @@ function Toast(props: ToastProps) {
             </button>
           </div>
         );
-      case 'warning':
+      case "warning":
         return (
           <div
             id="toast-warning"
