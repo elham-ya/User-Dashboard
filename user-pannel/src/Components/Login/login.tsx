@@ -35,7 +35,7 @@ export const Login = () => {
     ) {
       navigate('/Profile');
     } else {
-      console.log('Toast');
+      console.log('pass word wrong');
     }
   };
 
