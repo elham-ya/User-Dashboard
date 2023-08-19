@@ -1,2 +1,3 @@
 # User-Dashboard
-this code use type script
+this project use type script and tailwind css
+and is about login into dashboard
