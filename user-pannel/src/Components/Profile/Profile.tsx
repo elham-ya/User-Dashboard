@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react";
 
-export const Profile = () => {
+export default function Profile() {
   return <h1>Wlcome To Profile !</h1>;
-};
+}
