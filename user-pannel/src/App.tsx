@@ -1,7 +1,7 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Login } from './Components/Login/login';
-import { Profile } from './Components/Profile/Profile';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Login from "./Components/Login/login";
+import Profile from "./Components/Profile/Profile";
 
 function App() {
   return (

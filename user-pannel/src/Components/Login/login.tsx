@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import data from '../../dataBase.json';
+import Toastify from 'toastify-js';
 
-export const Login = () => {
+export default function Login() {
   type AuthUser = {
     userName?: String;
     password?: Number;
@@ -37,8 +38,27 @@ export const Login = () => {
     ) {
       navigate('/Profile');
     } else {
-      setShowModal(true);
-      alert('user name or password is incorrect!');
+      Toastify({
+        text: 'Username or Password is wrong!',
+        duration: 200000,
+        newWindow: false,
+        close: true,
+        gravity: 'top',
+        position: 'left',
+        backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+        style: {
+          width: '400px',
+          height: '100px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: '8px',
+        },
+        offset: {
+          x: '10px',
+          y: '10px',
+        },
+      }).showToast();
     }
   };
 
@@ -99,4 +119,4 @@ export const Login = () => {
       </div>
     </div>
   );
-};
+}
