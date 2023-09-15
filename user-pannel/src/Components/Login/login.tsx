@@ -12,7 +12,9 @@ export const Login = () => {
     password: data.account.password,
   };
   const inputPasswordReference = useRef<HTMLInputElement>(null!);
+  const loginButtonReference = useRef<HTMLButtonElement>(null!);
   const [userValue, setUserValue] = useState<AuthUser | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleBlurUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,13 +37,20 @@ export const Login = () => {
     ) {
       navigate('/Profile');
     } else {
-      console.log('pass word wrong');
+      setShowModal(true);
+      alert('user name or password is incorrect!');
     }
   };
 
   const handleKeyUpUserName = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter' || event.key === 'Tab') {
       inputPasswordReference.current.focus();
+    }
+  };
+
+  const handleKeyUpPassword = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key === 'Enter' || event.key === 'Tab') {
+      loginButtonReference.current.focus();
     }
   };
 
@@ -55,7 +64,7 @@ export const Login = () => {
         </div>
         <div className="columns-6">
           <input
-            tabIndex={1}
+            tabIndex={0}
             name="username"
             className="border border-gray-100 border-slate-300 rounded p-2"
             onBlur={handleBlurUserName}
@@ -70,16 +79,18 @@ export const Login = () => {
         </div>
         <div className="columns-6">
           <input
-            tabIndex={2}
+            tabIndex={1}
             className="border border-gray-100 border-slate-300 rounded p-2"
             onBlur={handleBlurPassword}
             ref={inputPasswordReference}
+            onKeyUp={handleKeyUpPassword}
           />
         </div>
       </div>
       <div className="container flex justify-center columns-3 mt-12">
         <button
-          tabIndex={3}
+          tabIndex={2}
+          ref={loginButtonReference}
           onClick={handleClickLoginButton}
           className="bg-blue-500 hover:bg-blue-700 text-white text-1xl font-bold py-2 px-4 border border-blue-700 rounded w-2/5"
         >
