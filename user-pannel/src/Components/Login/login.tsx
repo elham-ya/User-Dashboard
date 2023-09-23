@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import data from '../../dataBase.json';
-import Toastify from 'toastify-js';
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import data from "../../dataBase.json";
+import Toastify from "toastify-js";
 
-export default function Login() {
+const Login = () => {
   type AuthUser = {
     userName?: String;
     password?: Number;
@@ -36,40 +36,40 @@ export default function Login() {
       userValue?.userName === preDefinedAccess.userName &&
       userValue?.password === preDefinedAccess.password
     ) {
-      navigate('/Profile');
+      navigate("/Profile");
     } else {
       Toastify({
-        text: 'Username or Password is wrong!',
+        text: "Username or Password is wrong!",
         duration: 200000,
         newWindow: false,
         close: true,
-        gravity: 'top',
-        position: 'left',
-        backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+        gravity: "top",
+        position: "left",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
         style: {
-          width: '400px',
-          height: '100px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: '8px',
+          width: "400px",
+          height: "100px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "8px",
         },
         offset: {
-          x: '10px',
-          y: '10px',
+          x: "10px",
+          y: "10px",
         },
       }).showToast();
     }
   };
 
   const handleKeyUpUserName = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key === 'Enter' || event.key === 'Tab') {
+    if (event.key === "Enter" || event.key === "Tab") {
       inputPasswordReference.current.focus();
     }
   };
 
   const handleKeyUpPassword = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key === 'Enter' || event.key === 'Tab') {
+    if (event.key === "Enter" || event.key === "Tab") {
       loginButtonReference.current.focus();
     }
   };
@@ -119,4 +119,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;
