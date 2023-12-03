@@ -15,7 +15,6 @@ const Login = () => {
   const inputPasswordReference = useRef<HTMLInputElement>(null!);
   const loginButtonReference = useRef<HTMLButtonElement>(null!);
   const [userValue, setUserValue] = useState<AuthUser | null>(null);
-  const [showModal, setShowModal] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleBlurUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,24 +38,24 @@ const Login = () => {
       navigate("/Profile");
     } else {
       Toastify({
-        text: "Username or Password is wrong!",
-        duration: 200000,
+        text: "نام کاربری یا رمز عبور نادرست است!",
+        duration: 1000,
         newWindow: false,
         close: true,
         gravity: "top",
-        position: "left",
+        position: "center",
         backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
         style: {
-          width: "400px",
-          height: "100px",
+          width: "300px",
+          height: "50px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: "8px",
+          borderRadius: "5px",
         },
         offset: {
-          x: "10px",
-          y: "10px",
+          x: "20px",
+          y: "20px",
         },
       }).showToast();
     }
@@ -104,6 +103,7 @@ const Login = () => {
             onBlur={handleBlurPassword}
             ref={inputPasswordReference}
             onKeyUp={handleKeyUpPassword}
+            type="password"
           />
         </div>
       </div>
